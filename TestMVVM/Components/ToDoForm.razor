@@ -1,0 +1,19 @@
+﻿<EditForm Model="ViewModel.ToDoItem" OnValidSubmit="ViewModel.SaveToDoAsync">
+    <div class="col-4">
+        <div class="form-group">
+            <label for="name">Title</label>
+            <InputText class="form-control" id="name" @bind-Value="ViewModel.ToDoItem.Name" />
+        </div>
+        <div class="form-check">
+            <InputCheckbox class="form-check-input" id="done" @bind-Value=@ViewModel.ToDoItem.IsCompleted />
+            <label for="done" class="form-check-label">Done</label>
+        </div>
+        <input type="hidden" @bind-value="@ViewModel.ToDoItem.Id" />
+        <button type="submit" class="btn btn-primary" disabled="@ViewModel.IsBusy">Save</button>
+    </div>
+</EditForm>
+
+@code {
+    [CascadingParameter]
+    public IToDoViewModel ViewModel { get; set; }
+}

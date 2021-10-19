@@ -1,0 +1,7 @@
+﻿@page "/todo"
+@inherits ViewModelComponent<IToDoViewModel>
+
+<CascadingValue Value="ViewModel">
+    <ToDoForm />
+    <ToDoTable />
+</CascadingValue>

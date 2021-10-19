@@ -1,0 +1,26 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Completed</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var toDoItem in ViewModel.ToDoList)
+        {
+            <tr>
+                <td>@toDoItem.Name</td>
+                <td>@toDoItem.IsCompleted</td>
+                <td>
+                    <span class="oi oi-trash" aria-hidden="true" @onclick="@(() => ViewModel.DeleteToDoAsync(toDoItem))"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [CascadingParameter]
+    public IToDoViewModel ViewModel { get; set; }
+}
